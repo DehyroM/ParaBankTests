@@ -86,7 +86,7 @@ public class ParabankRegisterPage extends CommonActionsOnPage {
     private WebElement assertionMessageUserRegistration;
 
     @CacheLookup
-    @FindBy(xpath= "//*[@id=\"repeatedPassword.errors\"]")
+    @FindBy(id= "repeatedPassword.errors")
     private WebElement assertionMessagePassRepeated;
 
     //Functionalities:
@@ -150,14 +150,14 @@ public class ParabankRegisterPage extends CommonActionsOnPage {
     }
 
     public String isRegisterDone(){
-
         String submitedRegister;
+        submitedRegister = getText(assertionMessageUserRegistration).trim();
+        return submitedRegister;
+    }
 
-        if(isDisplayed(assertionMessagePassRepeated)){
-            submitedRegister = getText(assertionMessagePassRepeated).trim();
-        }else {
-            submitedRegister = getText(assertionMessageUserRegistration).trim();
-        }
+    public String notPassConfirmMatchInRegisterPage(){
+        String submitedRegister;
+        submitedRegister = getText(assertionMessagePassRepeated).trim();
         return submitedRegister;
     }
 }

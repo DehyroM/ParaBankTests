@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 public class ParabankContactUsPage extends CommonActionsOnPage {
     private static final Logger LOGGER = Logger.getLogger(ParabankContactUsPage.class);
     private ParabankModel parabankModel;
-    private static final String MODEL_NULL_MESSAGE = "NO SE ENCUENTRA LA PÁGINA BUSCADA!";
+    private static final String MODEL_NULL_MESSAGE = "NO SE ENCUENTRA LA PAGINA BUSCADA!";
 
     // Constructor:
 
@@ -57,6 +57,10 @@ public class ParabankContactUsPage extends CommonActionsOnPage {
     @FindBy(xpath= "//*[@id=\"rightPanel\"]/p[1]")
     private WebElement assertionMessageNameContactUs;
 
+    @CacheLookup
+    @FindBy(xpath= "//*[@id=\"name.errors\"]")
+    private WebElement assertionMessageNoNameContactUs;
+
     //Functionalities:
 
     public void fillContactUs(){
@@ -92,6 +96,12 @@ public class ParabankContactUsPage extends CommonActionsOnPage {
     public String isContactUsDone(){
         String submitedsendToCostumerCare;
         submitedsendToCostumerCare = getText(assertionMessageNameContactUs).trim();
+        return submitedsendToCostumerCare;
+    }
+
+    public String isNotNameInContactUs(){
+        String submitedsendToCostumerCare;
+        submitedsendToCostumerCare = getText(assertionMessageNoNameContactUs).trim();
         return submitedsendToCostumerCare;
     }
 }

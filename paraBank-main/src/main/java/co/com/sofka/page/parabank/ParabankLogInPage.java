@@ -39,15 +39,26 @@ public class ParabankLogInPage extends CommonActionsOnPage {
     @FindBy(xpath= "//*[@id=\"loginPanel\"]/form/div[3]/input")
     private WebElement sendToLogin;
 
+    @CacheLookup
+    @FindBy(xpath= "//*[@id=\"leftPanel\"]/ul/li[8]/a")
+    private WebElement btnLogOut;
+
     //For Assertions Test Case:
 
     @CacheLookup
     @FindBy(xpath= "//*[@id=\"accountTable\"]/thead/tr/th[3]")
     private WebElement assertionMessageUserLogin;
 
+    @CacheLookup
+    @FindBy(xpath= "//*[@id=\"rightPanel\"]/p")
+    private WebElement assertionMessageNoPass;
+
     //Functionalities:
 
     public void fillLogin(){
+
+        scrollOn(btnLogOut);
+        clickOn(btnLogOut);
 
         if(isDisplayed(loginPageLocator)) {
 
@@ -71,6 +82,12 @@ public class ParabankLogInPage extends CommonActionsOnPage {
         String submitedLogin ;
         submitedLogin = getText(assertionMessageUserLogin).trim();
         return submitedLogin;
+    }
+
+    public String notPassInLoginPage(){
+        String notPassInLogin;
+        notPassInLogin = getText(assertionMessageNoPass).trim();
+        return notPassInLogin;
     }
 
 }

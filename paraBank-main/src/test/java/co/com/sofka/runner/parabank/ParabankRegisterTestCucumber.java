@@ -9,8 +9,7 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         publish = true,
         features = {"src/test/resources/features/parabank/parabank_register.feature"},
-        glue = "co.com.sofka.stepdefinition.parabankstep",
-        tags = "@Register"
+        glue = "co.com.sofka.stepdefinition.parabankstep"
 )
 public class ParabankRegisterTestCucumber {
 
