@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import co.com.sofka.util.AleatoryFields;
 
+import java.util.List;
+
 import static co.com.sofka.util.Seconds.TEN_SECONDS;
 
 public class ParabankRegisterTest extends WebUi {
@@ -29,19 +31,20 @@ public class ParabankRegisterTest extends WebUi {
             generalSetUp();
 
             aleatoryFields = new AleatoryFields();
+            List<String> newFields = aleatoryFields.Fields();
 
             parabankModel = new ParabankModel();
-            parabankModel.setFirstNameRegister(aleatoryFields.Fields().get(0));
-            parabankModel.setLastNameRegister(aleatoryFields.Fields().get(1));
-            parabankModel.setAddressRegister(aleatoryFields.Fields().get(2));
-            parabankModel.setCityRegister(aleatoryFields.Fields().get(3));
-            parabankModel.setStateRegister(aleatoryFields.Fields().get(4));
-            parabankModel.setZipCodeRegister(aleatoryFields.Fields().get(5));
-            parabankModel.setPhoneRegister(aleatoryFields.Fields().get(6));
-            parabankModel.setSsnRegister(aleatoryFields.Fields().get(7));
-            parabankModel.setUsernameRegister(aleatoryFields.Fields().get(8));
-            parabankModel.setPasswordRegister(aleatoryFields.Fields().get(9));
-            parabankModel.setConfirmPassRegister(aleatoryFields.Fields().get(9));
+            parabankModel.setFirstNameRegister(newFields.get(0));
+            parabankModel.setLastNameRegister(newFields.get(1));
+            parabankModel.setAddressRegister(newFields.get(2));
+            parabankModel.setCityRegister(newFields.get(3));
+            parabankModel.setStateRegister(newFields.get(4));
+            parabankModel.setZipCodeRegister(newFields.get(5));
+            parabankModel.setPhoneRegister(newFields.get(6));
+            parabankModel.setSsnRegister(newFields.get(7));
+            parabankModel.setUsernameRegister(newFields.get(8));
+            parabankModel.setPasswordRegister(newFields.get(9));
+            parabankModel.setConfirmPassRegister(newFields.get(9));
         } catch (Exception exception){
             quiteDriver();
             Assertions.fail(exception.getMessage(), exception);
@@ -56,7 +59,7 @@ public class ParabankRegisterTest extends WebUi {
             parabankRegisterPage.fillRegister();
             Assertions.assertEquals(forSubmittedRegister(),parabankRegisterPage.isRegisterDone());
         } catch (Exception exception){
-            quiteDriver();
+            //quiteDriver();
             Assertions.fail(exception.getMessage(), exception);
             LOGGER.error(exception.getMessage(),exception);
         }
@@ -64,7 +67,7 @@ public class ParabankRegisterTest extends WebUi {
 
     @AfterEach
     public void tearDown(){
-        quiteDriver();
+        //quiteDriver();
     }
 
     private String forSubmittedRegister(){

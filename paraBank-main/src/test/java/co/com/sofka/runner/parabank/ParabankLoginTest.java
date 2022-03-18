@@ -3,11 +3,14 @@ package co.com.sofka.runner.parabank;
 import co.com.sofka.model.parabank.ParabankModel;
 import co.com.sofka.page.parabank.ParabankLogInPage;
 import co.com.sofka.stepdefinition.setup.WebUi;
+import co.com.sofka.util.AleatoryFields;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static co.com.sofka.util.Seconds.TEN_SECONDS;
 
@@ -15,6 +18,7 @@ public class ParabankLoginTest extends WebUi {
 
     private ParabankModel parabankModel;
     private static final Logger LOGGER = Logger.getLogger(ParabankLoginTest.class);
+    private AleatoryFields aleatoryFields;
 
     @BeforeEach
     public void setUp(){
@@ -22,9 +26,14 @@ public class ParabankLoginTest extends WebUi {
             setUpLog4j2();
             setUpWebDriver();
             generalSetUp();
+
+            aleatoryFields = new AleatoryFields();
+            List<String> newFields = aleatoryFields.Fields();
+
             parabankModel = new ParabankModel();
-            parabankModel.setUsernameLogin("dehyrobarrera");
-            parabankModel.setPasswordLogin("pass2304");
+            parabankModel.setUsernameLogin(newFields.get(8));
+            parabankModel.setPasswordLogin(newFields.get(9));
+
         } catch (Exception exception){
             quiteDriver();
             Assertions.fail(exception.getMessage(), exception);

@@ -3,6 +3,7 @@ package co.com.sofka.stepdefinition.parabankstep;
 import co.com.sofka.model.parabank.ParabankModel;
 import co.com.sofka.page.parabank.ParabankContactUsPage;
 import co.com.sofka.stepdefinition.setup.WebUi;
+import co.com.sofka.util.AleatoryFields;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,8 +17,9 @@ public class ParabankCostumerCareStepDefinition extends WebUi {
     private static final Logger LOGGER = Logger.getLogger(ParabankCostumerCareStepDefinition.class);
     private ParabankModel parabankModel;
     private ParabankContactUsPage parabankContactUsPage;
+    private AleatoryFields aleatoryFields;
 
-    @Given("^el cliente entra en la seccion Contact Us del sitio Web de Parabank$")
+    @Given("el cliente entra en la seccion Contact Us del sitio Web de Parabank")
     public void elClienteEntraEnLaSeccionContactUsDelSitioWebDeParabank() throws Throwable {
         try{
             setUpLog4j2();
@@ -28,18 +30,19 @@ public class ParabankCostumerCareStepDefinition extends WebUi {
             Assertions.fail(exception.getMessage(), exception);
             LOGGER.error(exception.getMessage(),exception);
         }
-
     }
 
-    @When("^el cliente ingresa un nombre: (.+), un email: (.+), un numero de telefono: (.+) y un mensaje: (.+) y clickea el boton Send to Customer Care$")
-    public void elCienteingresaSuNombreSuEmailSuNumeroDeTelefonoYUnMensaje(String nombre, String email, String telefono, String mensaje) throws Throwable {
+    @When("el cliente ingresa una informacion de contacto y clickea el boton Send to Customer Care")
+    public void elCienteingresaSuNombreSuEmailSuNumeroDeTelefonoYUnMensaje() throws Throwable {
 
         try{
+            aleatoryFields = new AleatoryFields();
+
             parabankModel = new ParabankModel();
-            parabankModel.setNameContactUs(nombre);
-            parabankModel.setEmailContactUs(email);
-            parabankModel.setPhoneContactUs(telefono);
-            parabankModel.setMessageContactUs(mensaje);
+            parabankModel.setNameContactUs(aleatoryFields.Fields().get(10));
+            parabankModel.setEmailContactUs(aleatoryFields.Fields().get(11));
+            parabankModel.setPhoneContactUs(aleatoryFields.Fields().get(6));
+            parabankModel.setMessageContactUs(aleatoryFields.Fields().get(12));
 
             parabankContactUsPage = new ParabankContactUsPage(driver, parabankModel, TEN_SECONDS.getValue());
             parabankContactUsPage.fillContactUs();
@@ -52,11 +55,17 @@ public class ParabankCostumerCareStepDefinition extends WebUi {
 
     }
 
-    @Then("^recibira un mensaje de confirmacion (.+) por diligenciar la peticion$")
-    public void recibiraUnMensajeDeConfirmacionPorDiligenciarLaPeticion(String mensajeDeConfirmacion) throws Throwable {
+    @Then("recibira un mensaje de confirmacion por diligenciar la peticion")
+    public void recibiraUnMensajeDeConfirmacionPorDiligenciarLaPeticion() throws Throwable {
 
-        Assertions.assertEquals(mensajeDeConfirmacion,parabankContactUsPage.isContactUsDone());
+        Assertions.assertEquals(forSubmittedContactUs(),parabankContactUsPage.isContactUsDone());
         quiteDriver();
 
+    }
+
+    private String forSubmittedContactUs(){
+        String submitedsendToCostumerCare;
+        submitedsendToCostumerCare = "Thank you "+parabankModel.getNameContactUs();
+        return submitedsendToCostumerCare;
     }
 }

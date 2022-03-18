@@ -1,5 +1,4 @@
 package co.com.sofka.util;
-
 import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
@@ -7,9 +6,9 @@ import java.util.List;
 
 public class AleatoryFields {
 
-    public List<String> Fields(){
+    Faker faker = new Faker();
 
-        Faker faker = new Faker();
+    public List<String> Fields(){
 
         String fName = faker.name().firstName();
         String lName = faker.name().lastName();
@@ -20,7 +19,7 @@ public class AleatoryFields {
         String phone = faker.phoneNumber().cellPhone();
         String ssn = String.valueOf(faker.number().numberBetween(00000001,99999999));
         String user = fName + zCode;
-        String pass = lName + city + ssn;
+        String pass = lName + ssn;
         String email = fName + "_" + lName + "@gmail.com";
 
         List<String> fields = new ArrayList<>();
@@ -38,7 +37,6 @@ public class AleatoryFields {
         fields.add(fName+" "+lName);
         fields.add(email);
         fields.add("Buen día, mi nombre es "+fName+" "+lName+", mi correo es "+email+", espero que estén bien.");
-
 
         return fields;
     }

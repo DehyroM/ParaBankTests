@@ -59,22 +59,34 @@ public class CommonActionsOnPage {
 
     // typeOn:
 
+    /*protected void explicitWaitTypeOn(WebElement webElement, CharSequence... keysToSend){
+        webDriverExplicitWait.until(visibilityOf(webElement)).sendKeys(keysToSend);
+    }*/
     protected void typeOn(WebElement webElement, CharSequence... keysToSend){
         webDriverExplicitWait.until(visibilityOf(webElement)).sendKeys(keysToSend);
     }
 
     // scrollOn:
 
+    /*protected void explicitWaitScrollOn(WebElement webElement){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("arguments[0].scrollIntoView();",webDriverExplicitWait.until(visibilityOf(webElement)));
+    }*/
     protected void scrollOn(WebElement webElement){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView();",webDriverExplicitWait.until(visibilityOf(webElement)));
     }
 
+
     // doSubmit:
 
+    /*protected void explicitWaitDoSubmit(WebElement webElement){
+        webDriverExplicitWait.until(visibilityOf(webElement)).submit();
+    }*/
     protected void doSubmit(WebElement webElement){
         webDriverExplicitWait.until(visibilityOf(webElement)).submit();
     }
+
 
     // getText:
 
