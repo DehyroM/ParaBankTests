@@ -18,7 +18,7 @@ public class ParabankLoginStepDefinition extends WebUi {
     private ParabankLogInPage parabankLogInPage;
 
     @Given("^el cliente ingresa en la Opcion de Login del sitio Web de Parabank$")
-    public void el_cliente_ingresa_en_la_opcin_de_login_del_sitio_web_de_parabank() throws Throwable {
+    public void elClienteIngresaEnLaOpcinDeLoginDelDitioWebDeParabank() throws Throwable {
 
         try{
             setUpLog4j2();
@@ -32,7 +32,7 @@ public class ParabankLoginStepDefinition extends WebUi {
     }
 
     @When("^el cliente ingresa un usuario: (.+), una contrasena: (.+), y da click en Log In$")
-    public void el_cliente_ingresa_un_usuario_una_contrasena_y_da_click_en_log_in(String user, String pass) throws Throwable {
+    public void elClienteIngresaUnUsuarioUnaContrasenaYDaClickEnLogIn(String user, String pass) throws Throwable {
 
         try{
             parabankModel = new ParabankModel();
@@ -49,7 +49,7 @@ public class ParabankLoginStepDefinition extends WebUi {
     }
 
     @Then("^recibira un mensaje de informacion sobre su cuenta (.+)$")
-    public void recibira_un_mensaje_de_informacion_sobre_su_cuenta(String infMess) throws Throwable {
+    public void recibiraUnMensajeDeInformacionSobreSuCuenta(String infMess) throws Throwable {
 
         Assertions.assertEquals(infMess, parabankLogInPage.isLoginDone());
         quiteDriver();

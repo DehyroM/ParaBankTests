@@ -10,11 +10,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import co.com.sofka.util.AleatoryFields;
+
 import static co.com.sofka.util.Seconds.TEN_SECONDS;
 
 public class ParabankCostumerCareTest extends WebUi {
     private ParabankModel parabankModel;
     private static final Logger LOGGER = Logger.getLogger(ParabankCostumerCareTest.class);
+    private AleatoryFields aleatoryFields;
 
     @BeforeEach
     public void setUp(){
@@ -22,11 +25,14 @@ public class ParabankCostumerCareTest extends WebUi {
             setUpLog4j2();
             setUpWebDriver();
             generalSetUp();
+
+            aleatoryFields = new AleatoryFields();
+
             parabankModel = new ParabankModel();
-            parabankModel.setNameContactUs("Dehyro Mendez");
-            parabankModel.setEmailContactUs("mendezdehyro@gmail.com");
-            parabankModel.setPhoneContactUs("3185610660");
-            parabankModel.setMessageContactUs("Quisiera recibir mayor informacion sobre mi cuenta, que fue bloqueada");
+            parabankModel.setNameContactUs(aleatoryFields.Fields().get(10));
+            parabankModel.setEmailContactUs(aleatoryFields.Fields().get(11));
+            parabankModel.setPhoneContactUs(aleatoryFields.Fields().get(6));
+            parabankModel.setMessageContactUs(aleatoryFields.Fields().get(12));
         } catch (Exception exception){
             quiteDriver();
             Assertions.fail(exception.getMessage(), exception);
@@ -57,5 +63,4 @@ public class ParabankCostumerCareTest extends WebUi {
         submitedsendToCostumerCare = "Thank you "+parabankModel.getNameContactUs();
         return submitedsendToCostumerCare;
     }
-
 }

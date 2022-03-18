@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import co.com.sofka.util.AleatoryFields;
+
 import static co.com.sofka.util.Seconds.TEN_SECONDS;
 
 public class ParabankRegisterTest extends WebUi {
@@ -17,24 +19,29 @@ public class ParabankRegisterTest extends WebUi {
     private static final String MESSAGE_CONFIRM = "PASSWORDS DO NOT MATCH";
     private static final Logger LOGGER = Logger.getLogger(ParabankRegisterTest.class);
 
+    private AleatoryFields aleatoryFields;
+
     @BeforeEach
     public void setUp(){
         try{
             setUpLog4j2();
             setUpWebDriver();
             generalSetUp();
+
+            aleatoryFields = new AleatoryFields();
+
             parabankModel = new ParabankModel();
-            parabankModel.setFirstNameRegister("Dehyro");
-            parabankModel.setLastNameRegister("Barrera");
-            parabankModel.setAddressRegister("Calle 24A sur # 4-58 Apto. 201");
-            parabankModel.setCityRegister("Pitalito");
-            parabankModel.setStateRegister("Huila");
-            parabankModel.setZipCodeRegister("417030");
-            parabankModel.setPhoneRegister("3185610660");
-            parabankModel.setSsnRegister("2154968732"); //*
-            parabankModel.setUsernameRegister("dmc02"); //*
-            parabankModel.setPasswordRegister("pass2305");
-            parabankModel.setConfirmPassRegister("pass2304");
+            parabankModel.setFirstNameRegister(aleatoryFields.Fields().get(0));
+            parabankModel.setLastNameRegister(aleatoryFields.Fields().get(1));
+            parabankModel.setAddressRegister(aleatoryFields.Fields().get(2));
+            parabankModel.setCityRegister(aleatoryFields.Fields().get(3));
+            parabankModel.setStateRegister(aleatoryFields.Fields().get(4));
+            parabankModel.setZipCodeRegister(aleatoryFields.Fields().get(5));
+            parabankModel.setPhoneRegister(aleatoryFields.Fields().get(6));
+            parabankModel.setSsnRegister(aleatoryFields.Fields().get(7));
+            parabankModel.setUsernameRegister(aleatoryFields.Fields().get(8));
+            parabankModel.setPasswordRegister(aleatoryFields.Fields().get(9));
+            parabankModel.setConfirmPassRegister(aleatoryFields.Fields().get(9));
         } catch (Exception exception){
             quiteDriver();
             Assertions.fail(exception.getMessage(), exception);
@@ -66,7 +73,7 @@ public class ParabankRegisterTest extends WebUi {
             submitedRegister = "Passwords did not match.";
             LOGGER.info(MESSAGE_CONFIRM);
         }else{
-            submitedRegister = "Welcome "+parabankModel.getUsernameRegister();
+            submitedRegister = "Welcome " + parabankModel.getUsernameRegister();
         }
         return submitedRegister;
     }
