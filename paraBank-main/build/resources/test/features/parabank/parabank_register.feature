@@ -1,7 +1,7 @@
 Feature: Registro en la Plataforma
-  Yo como cliente de Parabank
-  Quiero poder registrarme en la Página Web del Banco Parabank
-  Para vincularme con una cuenta bancaria
+  Yo como cliente de la empresa PARA BANK
+  Quiero poder registrarme en la página Web de la empresa
+  Para adquirir una cuenta bancaria
 
   Background:
     Given el cliente entra en la seccion de Registro del sitio Web de Parabank

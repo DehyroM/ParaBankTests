@@ -23,7 +23,7 @@ public class CommonActionsOnPage {
         }
     }
 
-    // Constructors:
+    // Constructor:
 
     public CommonActionsOnPage(WebDriver driver, int seconds) {
         try{
@@ -45,56 +45,30 @@ public class CommonActionsOnPage {
 
     //Functionalities:
 
-    // ClearOn:
-
     protected void clearOn(WebElement webElement){
         webDriverExplicitWait.until(elementToBeClickable(webElement)).clear();
     }
-
-    // clickOn:
 
     protected void clickOn(WebElement webElement){
         webDriverExplicitWait.until(elementToBeClickable(webElement)).click();
     }
 
-    // typeOn:
-
-    /*protected void explicitWaitTypeOn(WebElement webElement, CharSequence... keysToSend){
-        webDriverExplicitWait.until(visibilityOf(webElement)).sendKeys(keysToSend);
-    }*/
     protected void typeOn(WebElement webElement, CharSequence... keysToSend){
         webDriverExplicitWait.until(visibilityOf(webElement)).sendKeys(keysToSend);
     }
 
-    // scrollOn:
-
-    /*protected void explicitWaitScrollOn(WebElement webElement){
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("arguments[0].scrollIntoView();",webDriverExplicitWait.until(visibilityOf(webElement)));
-    }*/
     protected void scrollOn(WebElement webElement){
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript("arguments[0].scrollIntoView();",webDriverExplicitWait.until(visibilityOf(webElement)));
     }
 
-
-    // doSubmit:
-
-    /*protected void explicitWaitDoSubmit(WebElement webElement){
-        webDriverExplicitWait.until(visibilityOf(webElement)).submit();
-    }*/
     protected void doSubmit(WebElement webElement){
         webDriverExplicitWait.until(visibilityOf(webElement)).submit();
     }
 
-
-    // getText:
-
     protected String getText(WebElement webElement){
         return webDriverExplicitWait.until(visibilityOf(webElement)).getText();
     }
-
-    // isDisplayed:
 
     protected Boolean isDisplayed(WebElement webElement){
         try{

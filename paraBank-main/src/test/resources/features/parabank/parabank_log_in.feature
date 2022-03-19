@@ -1,6 +1,6 @@
 Feature: Logearse en la Plataforma
-  Yo como cliente de Parabank
-  Quiero poder loguearme en la Página Web del Banco Parabank
+  Yo como cliente de la empresa Parabank
+  Quiero poder loguearme en la Página Web de la empresa
   Para conocer la información de mi cuenta bancaria
 
   Background:

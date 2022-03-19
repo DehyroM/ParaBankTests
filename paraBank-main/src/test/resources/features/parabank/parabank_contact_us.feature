@@ -1,7 +1,7 @@
 Feature: Contacto con el Cliente
-  Yo como cliente de Parabank
-  Quiero poder contactarme con el Banco Parabank
-  Para realizar una PQRS
+  Yo como cliente de la empresa PARA BANK
+  Quiero poder contactarme con la empresa de forma virtual
+  Para recibir información útil sobre sus servicios
 
   Background:
     Given el cliente entra en la seccion Contact Us del sitio Web de Parabank

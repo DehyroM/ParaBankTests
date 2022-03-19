@@ -17,7 +17,7 @@ public class ParabankModel {
     String pass = lName + ssn;
     String email = fName + "_" + lName + "@gmail.com";
     String fullName = fName+" "+lName;
-    String message = "Buen día, mi nombre es "+fName+" "+lName+", mi correo es "+email+", espero que estén bien.";
+    String message = "Buen dia, mi nombre es "+fName+" "+lName+", mi correo es "+email+", espero que esten bien.";
 
     // Costumer Care:
     private String nameContactUs = "";
